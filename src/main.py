@@ -3,7 +3,7 @@ from CompiScript.compiscriptParser import compiscriptParser
 from Utils.CustomException import ThrowingErrorListener
 from ParseTree.parse_tree import TreeVisualizer
 from antlr4 import FileStream, CommonTokenStream
-
+from SemanticAnalyzer.semantic_analyzer import SemanticAnalyzer
 
 def main():
     
@@ -33,6 +33,10 @@ def main():
     tree_visualizer.render(output_file=tree_visualizer.name, 
                            format='png', 
                            output_dir='src/ParseTree/Output')
+    
+    # Create a SemanticAnalyzer object and visit the parse tree
+    semantic_analyzer = SemanticAnalyzer()
+    semantic_analyzer.visit(parse_tree)
 
 if __name__ == "__main__":
     try:
